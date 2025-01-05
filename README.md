@@ -8,28 +8,28 @@ Bot Discord sederhana untuk membuat dan mengirimkan embed ke channel tertentu me
 
 1. **Clone repository ini:**
    ```bash
-   git clone https://github.com/username/repository-name.git
+   git clone https://github.com/username/repository-name.git```
 
 	2.	Masuk ke direktori proyek:
 
-cd repository-name
+```cd repository-name```
 
 
 	3.	Instal dependensi:
 
-npm install
+```npm install```
 
 
 	4.	Ubah file .env:
 Isi file .env dengan token bot Anda. Contoh:
 
-DISCORD_TOKEN=your_discord_bot_token_here
-CLIENT_ID=your_discord_client_id_here
+```DISCORD_TOKEN=your_discord_bot_token_here
+CLIENT_ID=your_discord_client_id_here```
 
 
 	5.	Jalankan bot:
 
-node src/index.js
+```node src/index.js```
 
 Fitur
 	•	Membuat embed custom dengan judul, deskripsi, warna, thumbnail, gambar utama, dan lainnya.
