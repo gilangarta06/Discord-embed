@@ -7,10 +7,9 @@ Bot Discord sederhana untuk membuat dan mengirimkan embed ke channel tertentu me
 ## Instalasi
 
 1. Clone repository ini:
-   ```
-   git clone https://github.com/username/repository-name.git
+```git clone https://github.com/username/repository-name.git```
 
-2. Masuk ke direktori proyek:
+3. Masuk ke direktori proyek:
 ```
 cd repository-name
 ```
