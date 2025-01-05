@@ -1,13 +1,11 @@
-require('dotenv').config(); // Load environment variables from .env file
+require('dotenv').config();
 const { Client, GatewayIntentBits, SlashCommandBuilder, EmbedBuilder, REST, Routes, PermissionsBitField } = require('discord.js');
 
-// TOKEN DAN CLIENT ID dari .env
 const TOKEN = process.env.DISCORD_BOT_TOKEN;
 const CLIENT_ID = process.env.DISCORD_CLIENT_ID;
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 
-// Command Definition
 const commands = [
   new SlashCommandBuilder()
     .setName('embed')
@@ -59,7 +57,6 @@ const commands = [
     )
 ].map(command => command.toJSON());
 
-// Register Commands
 const rest = new REST({ version: '10' }).setToken(TOKEN);
 (async () => {
   try {
@@ -74,12 +71,10 @@ const rest = new REST({ version: '10' }).setToken(TOKEN);
   }
 })();
 
-// Bot Ready
 client.once('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
 });
 
-// Command Handler
 client.on('interactionCreate', async interaction => {
   if (!interaction.isCommand()) return;
 
@@ -95,11 +90,9 @@ client.on('interactionCreate', async interaction => {
       const url = interaction.options.getString('url');
       const targetChannel = interaction.options.getChannel('channel');
 
-      // Mendapatkan nama pembuat dan avatar URL
       const footerText = `${interaction.user.tag} | ${new Date().toLocaleString()}`;
       const footerIcon = interaction.user.displayAvatarURL({ dynamic: true });
 
-      // Membuat embed
       const embed = new EmbedBuilder()
         .setTitle(title)
         .setColor(color)
@@ -112,16 +105,13 @@ client.on('interactionCreate', async interaction => {
       if (author) embed.setAuthor({ name: author, iconURL: authorIcon });
 
       if (targetChannel) {
-        // Pastikan bot memiliki izin untuk mengirim pesan ke channel
         if (!targetChannel.permissionsFor(client.user).has(PermissionsBitField.Flags.SendMessages)) {
           return interaction.reply({ content: 'Bot tidak memiliki izin untuk mengirim pesan ke channel tersebut!', ephemeral: true });
         }
 
-        // Kirim embed ke channel yang dipilih
         await targetChannel.send({ embeds: [embed] });
         await interaction.reply({ content: `Embed berhasil dikirim ke ${targetChannel}!`, ephemeral: true });
       } else {
-        // Jika tidak ada channel yang dipilih, kirim embed di tempat command dipanggil
         await interaction.reply({ embeds: [embed] });
       }
     } catch (error) {
@@ -130,6 +120,4 @@ client.on('interactionCreate', async interaction => {
     }
   }
 });
-
-// Login Bot
 client.login(TOKEN);
