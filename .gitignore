@@ -1,0 +1,12 @@
+# Abaikan file log
+*.log
+
+# Abaikan folder node_modules
+node_modules/
+
+# Abaikan file konfigurasi
+.env
+
+# Abaikan file sementara sistem
+.DS_Store
+thumbs.db 
