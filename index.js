@@ -1,5 +1,5 @@
 require('dotenv').config();
-const { Client, GatewayIntentBits, SlashCommandBuilder, EmbedBuilder, REST, Routes, PermissionsBitField } = require('discord.js');
+const { Client, GatewayIntentBits, SlashCommandBuilder, EmbedBuilder, REST, Routes, PermissionsBitField, InteractionResponseFlags } = require('discord.js');
 
 const TOKEN = process.env.DISCORD_BOT_TOKEN;
 const CLIENT_ID = process.env.DISCORD_CLIENT_ID;
@@ -112,7 +112,7 @@ client.on('interactionCreate', async interaction => {
         await targetChannel.send({ embeds: [embed] });
         await interaction.reply({ content: `Embed berhasil dikirim ke ${targetChannel}!`, ephemeral: true });
       } else {
-        await interaction.reply({ embeds: [embed] });
+        await interaction.reply({ embeds: [embed], ephemeral: true });
       }
     } catch (error) {
       console.error('Error handling embed command:', error);
@@ -120,4 +120,5 @@ client.on('interactionCreate', async interaction => {
     }
   }
 });
+
 client.login(TOKEN);
