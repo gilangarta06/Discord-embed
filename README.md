@@ -18,7 +18,7 @@ Bot Discord sederhana untuk membuat dan mengirimkan embed ke channel tertentu me
 
 3. Instal dependensi:
     ```sh
-    npm install
+    npm install discord.js
     ```
 
 4. Ubah file .env dengan informasi bot Anda:
