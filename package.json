@@ -1,6 +1,11 @@
 {
   "dependencies": {
+    "@discordjs/opus": "^0.10.0",
+    "@discordjs/voice": "^0.16.0",
+    "@snazzah/davey": "^0.1.6",
     "discord.js": "^14.22.1",
-    "dotenv": "^17.2.1"
+    "dotenv": "^17.2.1",
+    "play-dl": "^1.9.7",
+    "ytdl-core": "^4.11.5"
   }
 }
