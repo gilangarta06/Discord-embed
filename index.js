@@ -10,20 +10,18 @@ const CLIENT_ID = process.env.DISCORD_CLIENT_ID;
 const client = new Client({
   intents: [
     GatewayIntentBits.Guilds,
-    GatewayIntentBits.GuildVoiceStates, // 🔑 penting buat fitur musik
+    GatewayIntentBits.GuildVoiceStates,
   ],
 });
 
 client.commands = new Collection();
 
-// load semua file command di folder ./command
 const commands = [];
 const commandFiles = fs.readdirSync(path.join(__dirname, 'command')).filter(file => file.endsWith('.js'));
 
 for (const file of commandFiles) {
   const commandModule = require(path.join(__dirname, 'command', file));
 
-  // kalau command export array (kayak music.js), iterasi satu2
   if (Array.isArray(commandModule.data)) {
     for (const cmd of commandModule.data) {
       client.commands.set(cmd.name, { ...commandModule, data: cmd });
